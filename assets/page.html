@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="color-scheme" content="dark" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Under Construction</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body,
+        html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #000000;
+            color: #dfe7e7;
+            font-family: "Consolas", "Courier New", monospace;
+            line-height: 1.4;
+        }
+
+        /* Solid decoy overlay matching index.html retro theme */
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #000000;
+            color: #dfe7e7;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 999;
+            user-select: none;
+        }
+
+        #overlay h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        #overlay p {
+            font-size: 1rem;
+            color: #559231;
+            /* Accent green */
+        }
+
+        /* Video is hidden by default */
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Decoy screen -->
+    <div id="overlay">
+        <!-- <h1> 404 Not Found </h1> -->
+        <!-- <p>Click anywhere to enter</p> -->
+        <p>Click anywhere to continue</p>
+    </div>
+
+    <!-- Video element (hidden until clicked) -->
+    <video id="rickroll" src="/assets/videos/rickroll.mp4" loop playsinline></video>
+
+    <script>
+        const video = document.getElementById('rickroll');
+        const overlay = document.getElementById('overlay');
+
+        overlay.addEventListener('click', () => {
+            overlay.style.display = 'none'; // Remove the overlay
+            video.style.display = 'block';   // Reveal the video
+            video.muted = false;             // Ensure audio is unmuted
+            video.play();                    // Start video playback
+        });
+    </script>
+</body>
+
+</html>
